@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Australian Imports | AustraliaImports.com.au</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary: #0047AB; /* Australian blue */
+            --secondary: #FFCD00; /* Australian gold */
+            --accent: #00843D; /* Australian green */
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --border-radius: 8px;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo i {
+            color: var(--primary);
+            font-size: 2rem;
+        }
+        
+        .logo-text h1 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            line-height: 1.2;
+        }
+        
+        .logo-text span {
+            color: var(--secondary);
+        }
+        
+        .logo-text p {
+            font-size: 0.85rem;
+            color: var(--gray);
+            font-weight: 500;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        .cart-icon {
+            position: relative;
+            font-size: 1.3rem;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--secondary);
+            color: var(--dark);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 71, 171, 0.9), rgba(0, 132, 61, 0.8)), url('https://images.unsplash.com/photo-1523381139549-7b8fd0c8c9ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            border-radius: 0 0 var(--border-radius) var(--border-radius);
+            margin-bottom: 40px;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 25px;
+            opacity: 0.9;
+        }
+        
+        /* Products Section */
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+        }
+        
+        .products-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+        }
+        
+        .product-image {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-category {
+            display: inline-block;
+            background-color: var(--light);
+            color: var(--primary);
+            font-size: 0.8rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .product-description {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .product-price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .product-price span {
+            font-size: 0.9rem;
+            color: var(--gray);
+            text-decoration: line-through;
+            margin-left: 8px;
+        }
+        
+        .add-to-cart {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            width: 100%;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .add-to-cart:hover {
+            background-color: #003580;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-column a:hover {
+            color: var(--secondary);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--secondary);
+            color: var(--dark);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .products-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                gap: 15px;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .products-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero {
+                padding: 40px 0;
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-globe-asia"></i>
+                <div class="logo-text">
+                    <h1>Australia<span>Imports</span></h1>
+                    <p>Premium International Products</p>
+                </div>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#"><i class="fas fa-box-open"></i> Products</a></li>
+                    <li><a href="#"><i class="fas fa-tags"></i> Deals</a></li>
+                    <li><a href="#"><i class="fas fa-question-circle"></i> About</a></li>
+                    <li><a href="#"><i class="fas fa-phone-alt"></i> Contact</a></li>
+                    <li>
+                        <a href="#" class="cart-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count">3</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>Premium International Products</h2>
+            <p>Discover our curated collection of 10 exclusive imported products, directly sourced from around the world and delivered to your doorstep across Australia.</p>
+            <p><i class="fas fa-shipping-fast"></i> Free shipping on orders over $100 | <i class="fas fa-shield-alt"></i> 30-day money-back guarantee</p>
+        </div>
+    </section>
+
+    <!-- Main Products Section -->
+    <main class="container">
+        <h2 class="section-title">Featured Imported Products</h2>
+        
+        <div class="products-container">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80" alt="Swiss Luxury Watch" class="product-image">
+                <div class="product-info">
+                    <span class="product-category">Watches</span>
+                    <h3 class="product-title">Swiss Automatic Chronograph</h3>
+                    <p class="product-description">Precision Swiss-made automatic watch with sapphire crystal and 48-hour power reserve.</p>
+                    <div class="product-price">$1,299<span>$1,599</span></div>
+                    <button class="add-to-cart"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+            </div>
+            
+            <!-- Product 2 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Italian Coffee Machine" class="product-image">
+                <div class="product-info">
+                    <span class="product-category">Kitchen Appliances</span>
+                    <h3 class="product-title">Italian Espresso Machine</h3>
+                    <p class="product-description">Professional-grade espresso machine with 15-bar pressure and milk frother.</p>
+                    <div class="product-price">$899<span>$1,099</span></div>
+                    <button class="add-to-cart"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+            </div>
+            
+            <!-- Product 3 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80" alt="Japanese Chef Knife" class="product-image">
+                <div class="product-info">
+                    <span class="product-category">Kitchenware</span>
+                    <h3 class="product-title">Japanese Damascus Chef Knife</h3>
+                    <p class="product-description">Hand-forged 8-inch Damascus steel chef knife with beautiful pattern and exceptional sharpness.</p>
+                    <div class="product-price">$349<span>$399</span></div>
+                    <button class="add-to-cart"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+            </div>
+            
+            <!-- Product 4 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="German Wireless Headphones" class="product-image">
+                <div class="product-info">
+                    <span class="product-category">Electronics</span>
+                    <h3 class="product-title">German Wireless Headphones</h3>
+                    <p class="product-description">Premium noise-cancelling headphones with 30-hour battery life and Hi-Fi sound.</p>
+                    <div class="product-price">$429<span>$499</span></div>
+                    <button class="add-to-cart"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+            </div>
+            
+            <!-- Product 5 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80" alt="French Perfume" class="product-image">
+                <div class="product-info">
+                    <span class="product-category">Fragrances</span>
+                    <h3 class="product-title">French Luxury Perfume</h3>
+                    <p class="product-description">Elegant floral fragrance with notes of jasmine, rose, and sandalwood. Made in Grasse, France.</p>
+                    <div class="product-price">$189<span>$229</span></div>
+                    <button class="add-to-cart"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+            </div>
+            
+            <!-- Product 6 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1598312133603-3a2c4b2b2b2b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Swiss Chocolate" class="product-image">
+                <div class="product-info">
+                    <span class="product-category">Food & Beverages</span>
+                    <h3 class="product-title">Swiss Luxury Chocolate Box</h3>
+                    <p class="product-description">Assortment of 24 premium Swiss chocolates with hazelnut, caramel, and fruit fillings.</p>
+                    <div class="product-price">$69<span>$89</span></div>
+                    <button class="add-to-cart"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+            </div>
+            
+            <!-- Product 7 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Italian Leather Bag" class="product-image">
+                <div class="product-info">
+                    <span class="product-category">Fashion</span>
+                    <h3 class="product-title">Italian Leather Handbag</h3>
+                    <p class="product-description">Handcrafted genuine leather handbag with multiple compartments and gold hardware.</p>
+                    <div class="product-price">$449<span>$549</span></div>
+                    <button class="add-to-cart"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+            </div>
+            
+            <!-- Product 8 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Swedish Office Chair" class="product-image">
+                <div class="product-info">
+                    <span class="product-category">Furniture</span>
+                    <h3 class="product-title">Swedish Ergonomic Office Chair</h3>
+                    <p class="product-description">Premium ergonomic office chair with lumbar support and breathable mesh back.</p>
+                    <div class="product-price">$599<span>$699</span></div>
+                    <button class="add-to-cart"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+            </div>
+            
+            <!-- Product 9 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Portuguese Wine" class="product-image">
+                <div class="product-info">
+                    <span class="product-category">Wine & Spirits</span>
+                    <h3 class="product-title">Portuguese Vintage Port Wine</h3>
+                    <p class="product-description">Aged 10-year port wine from Douro Valley, Portugal. Rich, complex flavor profile.</p>
+                    <div class="product-price">$129<span>$159</span></div>
+                    <button class="add-to-cart"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+            </div>
+            
+            <!-- Product 10 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Dutch Bicycle" class="product-image">
+                <div class="product-info">
+                    <span class="product-category">Sports & Outdoors</span>
+                    <h3 class="product-title">Dutch City Commuter Bicycle</h3>
+                    <p class="product-description">Classic Dutch-style bicycle with 7-speed gears, rear rack, and integrated lock.</p>
+                    <div class="product-price">$799<span>$899</span></div>
+                    <button class="add-to-cart"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>AustraliaImports.com.au</h3>
+                    <p>Bringing the world's finest products to Australia since 1993. With 30 years of import experience, we guarantee authenticity and quality.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> All Products</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Special Offers</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Shipping Information</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Return Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Customer Service</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-phone-alt"></i> 1300 123 456</a></li>
+                        <li><a href="#"><i class="fas fa-envelope"></i> help@australiaimports.com.au</a></li>
+                        <li><a href="#"><i class="fas fa-question-circle"></i> FAQ</a></li>
+                        <li><a href="#"><i class="fas fa-exchange-alt"></i> Track Your Order</a></li>
+                        <li><a href="#"><i class="fas fa-lock"></i> Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Import Expertise</h3>
+                    <p>With three decades of experience in international importing, we handle all customs, quality checks, and logistics to ensure you receive genuine products in perfect condition.</p>
+                    <p><i class="fas fa-award"></i> Australian Importer of the Year 2022</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 AustraliaImports.com.au. All rights reserved. ABN: 12 345 678 910</p>
+                <p>Prices are in Australian Dollars (AUD) and include GST where applicable.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Shopping cart functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const addToCartButtons = document.querySelectorAll('.add-to-cart');
+            const cartCount = document.querySelector('.cart-count');
+            let count = 3; // Starting with 3 items already in cart
+            
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const productTitle = this.parentElement.querySelector('.product-title').textContent;
+                    
+                    // Animation feedback
+                    this.innerHTML = '<i class="fas fa-check"></i> Added to Cart';
+                    this.style.backgroundColor = '#00843D';
+                    
+                    // Update cart count
+                    count++;
+                    cartCount.textContent = count;
+                    
+                    // Reset button after 1.5 seconds
+                    setTimeout(() => {
+                        this.innerHTML = '<i class="fas fa-cart-plus"></i> Add to Cart';
+                        this.style.backgroundColor = '';
+                    }, 1500);
+                    
+                    // Show notification
+                    alert(`${productTitle} has been added to your cart!`);
+                });
+            });
+            
+            // Add hover effect to product cards
+            const productCards = document.querySelectorAll('.product-card');
+            productCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
